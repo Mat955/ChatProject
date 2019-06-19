@@ -31,12 +31,13 @@ class App extends Component {
                     </div>
                 </div>
                 <div className={styles.AppBody}>
-                    <UserList
+                    <UsersList
                         users={this.state.users}
                     />
                     <div className={styles.MessageWrapper}>
                         <MessageList
-                            message={this.state.messages}
+                            messages={this.state.messages}
+                            users={this.state.users}
                         />
                         <MessageForm
                             onMessageSubmit={message => this.handleMessageSubmit(message)}
@@ -50,6 +51,31 @@ class App extends Component {
 
     renderUserForm() {
         return (<UserForm onUserSubmit={name => this.handleUserSubmit(name)} />)
+    }
+
+    componentDidMount() {
+        socket.on('message', message => this.messageReceive(message));
+        socket.on('update', ({ users }) => this.chatUpdate(users));
+    }
+
+    messageReceive(message) {
+        const messages = [message, ...this.state.messages];
+        this.setState({ messages });
+    }
+
+    chatUpdate(users) {
+        this.setState({ users });
+    }
+
+    handleUserSubmit(name) {
+        this.setState({ name });
+        socket.emit('join', name);
+    }
+
+    handleMessageSubmit(message) {
+        const messages = [message, ...this.state.messages];
+        this.setState({ messages });
+        socket.emit('message', message);
     }
 };
 

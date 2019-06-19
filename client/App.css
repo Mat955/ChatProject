@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Special+Elite&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dfe3ee;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.App {
+    border: 2px solid #8b9dc3;
+}
+
+.AppHeader {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #8b9dc3;
+}
+
+.AppTitle {
+    display: flex;
+    width: 25vw;
+    border-right: 1px solid #8b9dc3;
+    justify-content: center;
+    padding: 20px;
+}
+
+.AppRoom {
+    display: flex;
+    width: 75vw;
+    justify-content: center;
+    padding: 20px;
+}
+
+.AppBody {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.MessageWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 75vw;
+    height: 80vh;
+    flex: 1;
+}

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
+.MessageList {
+    font-family: 'Special Elite', cursive;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 75vw;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.Message {
+    padding: 10px;
+}

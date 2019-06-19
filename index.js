@@ -22,12 +22,9 @@ io.on('connection', (socket) => {
             from: name
         });
     });
-    socket.on('disconnect', () => {
-        usersService.removeUser(socket.id);
-        socket.broadcast.emit('update', {
-            users: usersService.getAllUsers()
-        });
-    });
+});
+
+io.on('connection', (socket) => {
     ///functions when client connect to chat
     //client listening message when he connected to chat
     socket.on('join', (name) => {
@@ -38,6 +35,12 @@ io.on('connection', (socket) => {
         });
         //the file emits an update event which updates information about the list of users to everyone listening to the 'update' event
         io.emit('update', {
+            users: usersService.getAllUsers()
+        });
+    });
+    socket.on('disconnect', () => {
+        usersService.removeUser(socket.id);
+        socket.broadcast.emit('update', {
             users: usersService.getAllUsers()
         });
     });
