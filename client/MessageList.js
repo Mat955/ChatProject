@@ -3,21 +3,28 @@ import React from 'react';
 import styles from './MessageList.css';
 
 const Message = props => (
-    <div className={styles.Message}>
-        <strong>{props.from} : </strong>
-        <span>{props.text}</span>
+    <div>
+        <div className={styles.Message}>
+            <strong>{props.from} : </strong>
+            <span>{props.text}    </span>
+            <span className={styles.messageTime}>{props.time}</span>
+        </div>
     </div>
 );
 
 const MessageList = props => (
+
     <div className={styles.MessageList}>
         {
             props.messages.map((message, i) => {
+                console.log('coto', props.time)
                 return (
                     <Message
                         key={i}
                         from={message.from}
                         text={message.text}
+                        time={message.time}
+                    // time={timeNow.toLocaleTimeString()}
                     />
                 );
             })

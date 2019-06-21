@@ -8,8 +8,5 @@
     width: 75vw;
     padding: 20px;
     font-size: 20px;
-}
-
-.Message {
-    padding: 10px;
+    overflow: scroll;
 }
