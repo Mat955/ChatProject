@@ -13,7 +13,7 @@ const socket = io('/');
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { users: [], messages: [], text: '', name: '', time: new Date().toLocaleTimeString() };
+        this.state = { users: [], messages: [], text: '', name: '' };
     }
     render() {
         return this.state.name !== '' ? this.renderLayout() : this.renderUserForm();
@@ -39,7 +39,6 @@ class App extends Component {
                         <MessageList
                             messages={this.state.messages}
                             users={this.state.users}
-                            time={this.state.time}
                         />
                         <MessageForm
                             onMessageSubmit={message => this.handleMessageSubmit(message)}

@@ -17,14 +17,14 @@ const MessageList = props => (
     <div className={styles.MessageList}>
         {
             props.messages.map((message, i) => {
+                var date = new Date().toLocaleTimeString()
                 console.log('coto', props.time)
                 return (
                     <Message
                         key={i}
                         from={message.from}
                         text={message.text}
-                        time={message.time}
-                    // time={timeNow.toLocaleTimeString()}
+                        time={date}
                     />
                 );
             })
