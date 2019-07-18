@@ -18,7 +18,8 @@ io.on('connection', (socket) => {
         const { name } = usersService.getUserById(socket.id);
         socket.broadcast.emit('message', {
             text: message.text,
-            from: name
+            from: name,
+            time: message.time,
         });
     });
 });

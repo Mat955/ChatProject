@@ -16,19 +16,23 @@ module.exports = (env) => {
             })
         )
     }
+    const enviroment = env || 'production';
     return {
-        mode: env,
+        mode: enviroment,
         entry: './client/index.js',
         output: {
             path: path.resolve(__dirname, 'public'),
             filename: 'app.bundle.js'
         },
-
+        plugins: plugins,
         module: {
             rules: [
                 {
                     test: /\.js$/,
-                    loader: "babel-loader"
+                    loader: "babel-loader",
+                    options: {
+                        plugins: env !== 'production' ? ["react-hot-loader/babel"] : []
+                    }
                 },
                 {
                     test: /\.css$/,
@@ -44,11 +48,10 @@ module.exports = (env) => {
                 }
             ]
         },
-        plugins: plugins,
         devServer: {
             proxy: {
                 '/socket.io': {
-                    target: 'localhost:8080',
+                    target: 'http://localhost:3000',
                     ws: true
                 }
             }
