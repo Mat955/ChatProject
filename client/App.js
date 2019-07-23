@@ -44,7 +44,14 @@ class App extends Component {
         this.setState({ messages });
         socket.emit('message', message);
     }
+
+    handleMessageRemove(message) {
+        const messages = [message, ...this.state.messages];
+        this.setState({ messages: messages.filter((m, time) => time === 0) });
+        socket.emit('message', message);
+    }
     render() {
+        console.log('this.state', this.state);
         this.state.time = new Date().toLocaleTimeString();
         return this.state.name !== '' ? this.renderLayout() : this.renderUserForm();
     }
@@ -66,6 +73,7 @@ class App extends Component {
                     />
                     <div className={styles.MessageWrapper}>
                         <MessageList
+                            onMessageRemove={message => this.handleMessageRemove(message)}
                             messages={this.state.messages}
                         />
                         <button>x</button>

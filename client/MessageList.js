@@ -5,11 +5,12 @@ import styles from './MessageList.css';
 const Message = props => (
     <div>
         <div className={styles.Message}>
+            <span className={styles.deleteButton} onClick={(Message) => this.handleMessageRemove(Message)}> X </span>
             <strong>{props.from} : </strong>
             <span>{props.text}    </span>
             <span className={styles.messageTime}>{props.time}</span>
         </div>
-    </div>
+    </div >
 );
 
 const MessageList = props => (
