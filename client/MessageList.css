@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
+.MessageList {
+    font-family: 'Special Elite', cursive;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 75vw;
+    padding: 20px;
+    font-size: 20px;
+    overflow: scroll;
+}
+
+.Message {
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.deleteButton {
+    display: none;
+    background-color: #8b9dc3;
+    color: white;
+    padding: 2px;
+    border: 1px solid black;
+    margin-right: 10px;
+}
+
+.Message:hover .deleteButton {
+    display: inline-block;
+    cursor: pointer;
+}
